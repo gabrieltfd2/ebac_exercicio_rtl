@@ -1,0 +1,31 @@
+import React, { useState } from 'react';
+
+const CommentForm = ({ onAddComment }) => {
+  const [comment, setComment] = useState('');
+
+  const handleChange = (e) => {
+    setComment(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!comment.trim()) return;
+    onAddComment(comment);
+    setComment('');
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        value={comment}
+        onChange={handleChange}
+        placeholder="Digite seu comentário"
+        data-testid="comment-input"
+      />
+      <button type="submit">Adicionar Comentário</button>
+    </form>
+  );
+};
+
+export default CommentForm;
