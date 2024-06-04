@@ -11,5 +11,25 @@ function App() {
     </div>
   );
 }
+import React, { useState } from 'react';
+import CommentForm from './components/CommentForm';
+import CommentList from './components/CommentList';
 
+const App = () => {
+  const [comments, setComments] = useState([]);
+
+  const handleAddComment = (newComment) => {
+    setComments([...comments, newComment]);
+  };
+
+  return (
+    <div>
+      <h1>Meu Aplicativo de Comentários</h1>
+      <CommentForm onAddComment={handleAddComment} />
+      <CommentList comments={comments} />
+    </div>
+  );
+};
+
+export default App;
 export default App;
